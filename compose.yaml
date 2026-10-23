@@ -1,0 +1,16 @@
+services:
+  ems:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "8080"
+      EMS_DB_PATH: /data/lectro-ems.sqlite
+      ENVIRONMENT: self-hosted-demo
+    volumes:
+      - ems-data:/data
+
+volumes:
+  ems-data:
